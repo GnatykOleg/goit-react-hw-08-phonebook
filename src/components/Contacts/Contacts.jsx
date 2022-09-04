@@ -1,59 +1,50 @@
 import { useDispatch, useSelector } from 'react-redux';
-
 import { deleteContacts } from 'redux/contacts/contacts-operations';
-import PropTypes from 'prop-types';
+import { loadingSelector } from 'redux/contacts/contacts-selectors';
+import { Loader } from '../Loader/Loader';
 import s from './Contacts.module.css';
-import { Blocks } from 'react-loader-spinner';
+import { fetchContacts } from 'redux/contacts/contacts-operations';
+import { useEffect } from 'react';
 
-export default function Contacts({ data }) {
-  const loading = useSelector(state => state.loading);
+import {
+  contactsSelector,
+  filterSelector,
+} from 'redux/contacts/contacts-selectors';
 
+export default function Contacts() {
   const dispatch = useDispatch();
-  if (loading) {
-    return (
-      <ul className={s.list}>
-        <h3 className={s.listTitle}>Total contacts: {data.length}</h3>
-        <Blocks
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="blocks-loading"
-          wrapperStyle={{}}
-          wrapperClass="blocks-wrapper"
-        />
-        ;
-      </ul>
-    );
-  } else {
-    return (
-      <ul className={s.list}>
-        <h3 className={s.listTitle}>Total contacts: {data.length}</h3>
-        {data.map(({ id, name, phone }) => {
-          return (
-            <li key={id} className={s.item}>
-              <p className={s.text}>{name}</p>
-              <p className={s.text}>{phone}</p>
-              <button
-                className={s.btn}
-                type="submit"
-                onClick={() => dispatch(deleteContacts(id))}
-              >
-                Delete
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    );
-  }
-}
 
-Contacts.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string,
-    })
-  ),
-};
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  const contacts = useSelector(contactsSelector);
+  const filter = useSelector(filterSelector);
+  const loading = useSelector(loadingSelector);
+  const data = contacts.filter(({ name }) =>
+    name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
+  );
+
+  const elements = data.map(({ id, name, phone }) => {
+    return (
+      <li key={id} className={s.item}>
+        <p className={s.text}>{name}</p>
+        <p className={s.text}>{phone}</p>
+        <button
+          className={s.btn}
+          type="submit"
+          onClick={() => dispatch(deleteContacts(id))}
+        >
+          Delete
+        </button>
+      </li>
+    );
+  });
+
+  return (
+    <ul className={s.list}>
+      <h3 className={s.listTitle}>Total contacts: {data.length}</h3>
+      {!loading ? elements : <Loader />}
+    </ul>
+  );
+}

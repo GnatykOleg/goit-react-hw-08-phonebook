@@ -11,6 +11,8 @@ import {
 } from './contacts/contacts-reducer';
 
 import {
+  // persistStore,
+  // persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -18,6 +20,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage';
 
 import logger from 'redux-logger';
 
@@ -30,6 +33,14 @@ const middleware = [
 
   logger,
 ];
+
+// рут редюсер и auth редюсер я импоритрую из других фалов посмотреть в ветке репеты
+
+// const authPeristConfig = {
+//   key: 'auth',
+//   storage,
+//   whitelist: ['token'],
+// };
 
 const rootReducer = combineReducers({
   contacts: contactsReducer,

@@ -1,0 +1,27 @@
+.link {
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+
+  transition: all 250ms linear;
+}
+
+.link:hover,
+.link:focus {
+  color: orange;
+}
+
+.linkActive {
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: orange;
+  transition: all 250ms linear;
+}
+
+.item:not(:last-child) {
+  margin-right: 25px;
+}
+
+.list {
+  display: flex;
+}
