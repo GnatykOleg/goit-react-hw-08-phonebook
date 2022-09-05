@@ -2,11 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteContacts } from 'redux/contacts/contacts-operations';
 import { loadingSelector } from 'redux/contacts/contacts-selectors';
 import { Loader } from 'components';
-import s from './ContactsList.module.css';
 import { fetchContacts } from 'redux/contacts/contacts-operations';
 import { useEffect } from 'react';
-
-// import { getIsLoggedIn } from 'redux/auth/auth-selectors';
+import s from './ContactsList.module.css';
 
 import {
   contactsSelector,
@@ -15,12 +13,7 @@ import {
 
 export default function Contacts() {
   const dispatch = useDispatch();
-  // const isLoggedIn = useSelector(getIsLoggedIn);
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     dispatch(fetchContacts());
-  //   } else{contacts :[]}
-  // }, [isLoggedIn, dispatch]);
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);

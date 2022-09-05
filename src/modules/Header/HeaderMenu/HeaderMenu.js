@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { items } from './items';
+import { useSelector } from 'react-redux';
+import { getIsLoggedIn } from 'redux/auth/auth-selectors';
 import s from '../HeaderMenu/HeaderMenu.module.css';
 
 const getLink = ({ isActive }) => {
@@ -7,7 +9,11 @@ const getLink = ({ isActive }) => {
 };
 
 export default function HeaderMenu() {
-  const elements = items.map(({ id, text, to }) => (
+  const isLoggedIn = useSelector(getIsLoggedIn);
+  const itemsFilteredPrivat = isLoggedIn
+    ? items
+    : items.filter(item => !item.private);
+  const elements = itemsFilteredPrivat.map(({ id, text, to }) => (
     <li className={s.item} key={id}>
       <NavLink to={to} className={getLink}>
         {text}

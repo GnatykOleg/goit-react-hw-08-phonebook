@@ -1,11 +1,17 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { items } from './items';
 import s from '../HeaderMenu/HeaderMenu.module.css';
+
+const getLink = ({ isActive }) => {
+  return !isActive ? s.link : s.linkActive;
+};
 
 export default function HeaderAuth() {
   const elements = items.map(({ id, text, to }) => (
     <li className={s.item} key={id}>
-      <Link to={to}>{text}</Link>
+      <NavLink className={getLink} to={to}>
+        {text}
+      </NavLink>
     </li>
   ));
 

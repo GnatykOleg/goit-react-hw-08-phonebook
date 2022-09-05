@@ -5,10 +5,13 @@ import s from './Header.module.css';
 
 export default function Header() {
   const isLoggedIn = useSelector(getIsLoggedIn);
+
   return (
     <header className={s.header}>
-      <HeaderMenu />
-      {isLoggedIn ? <UserMenu /> : <HeaderAuth />}
+      <div className={s.container}>
+        <HeaderMenu />
+        {isLoggedIn ? <UserMenu /> : <HeaderAuth />}
+      </div>
     </header>
   );
 }

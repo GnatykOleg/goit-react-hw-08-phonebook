@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import s from './ContactsForm.module.css';
-// import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsSelector } from 'redux/contacts/contacts-selectors';
 import { addContacts } from 'redux/contacts/contacts-operations';
@@ -28,7 +27,6 @@ export default function Form() {
 
   const formSubmitData = ({ name, number }) => {
     const newContactName = name.toLowerCase();
-
     if (contacts.some(({ name }) => name.toLowerCase() === newContactName)) {
       alert(`${name} is already in contacts`);
     } else {
@@ -39,10 +37,6 @@ export default function Form() {
   const onFormSubmit = event => {
     event.preventDefault();
     formSubmitData({ name, number });
-    resetForm();
-  };
-
-  const resetForm = () => {
     setName('');
     setNumber('');
   };
@@ -83,7 +77,3 @@ export default function Form() {
     </form>
   );
 }
-
-// Form.propTypes = {
-//   formSubmitData: PropTypes.func.isRequired,
-// };

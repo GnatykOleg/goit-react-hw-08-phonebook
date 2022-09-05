@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 30px;
 }
 
 code {
@@ -16,6 +15,10 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.title {
+  text-align: center;
 }
 
 p,
@@ -51,4 +54,44 @@ ol {
   flex-direction: column;
   font-size: 18px;
   color: black;
+}
+
+.btn {
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 2px solid #31bbbb;
+  color: #31bbbb;
+
+  border-radius: 0.6em;
+
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  padding: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  transition: all 250ms linear;
+}
+.btn:hover,
+.btn:focus {
+  color: orange;
+  border: 2px solid orange;
+
+  outline: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section {
+  padding-top: 25px;
 }
