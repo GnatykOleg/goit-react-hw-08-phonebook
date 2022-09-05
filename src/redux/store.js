@@ -10,9 +10,11 @@ import {
   filterReducer,
 } from './contacts/contacts-reducer';
 
+import authReducerSlice from './auth/auth-slice';
+
 import {
-  // persistStore,
-  // persistReducer,
+  persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -20,8 +22,8 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
 
+import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 
 const middleware = [
@@ -34,13 +36,14 @@ const middleware = [
   logger,
 ];
 
-// рут редюсер и auth редюсер я импоритрую из других фалов посмотреть в ветке репеты
+const authPeristConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+  blacklist: ['_persist'],
+};
 
-// const authPeristConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['token'],
-// };
+const persistedAuthReducer = persistReducer(authPeristConfig, authReducerSlice);
 
 const rootReducer = combineReducers({
   contacts: contactsReducer,
@@ -49,7 +52,12 @@ const rootReducer = combineReducers({
 });
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    contacts: rootReducer,
+    auth: persistedAuthReducer,
+  },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
+
+export const persistor = persistStore(store);

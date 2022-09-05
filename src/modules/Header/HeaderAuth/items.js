@@ -3,11 +3,11 @@ export const items = [
   {
     id: shortid(),
     to: '/register',
-    text: 'Регистрация',
+    text: 'Register',
   },
   {
     id: shortid(),
     to: '/login',
-    text: 'Вход',
+    text: 'Login',
   },
 ];

@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContacts } from 'redux/contacts/contacts-operations';
 import { loadingSelector } from 'redux/contacts/contacts-selectors';
-import { Loader } from '../Loader/Loader';
-import s from './Contacts.module.css';
+import { Loader } from 'components';
+import s from './ContactsList.module.css';
 import { fetchContacts } from 'redux/contacts/contacts-operations';
 import { useEffect } from 'react';
+
+// import { getIsLoggedIn } from 'redux/auth/auth-selectors';
 
 import {
   contactsSelector,
@@ -13,23 +15,30 @@ import {
 
 export default function Contacts() {
   const dispatch = useDispatch();
-
+  // const isLoggedIn = useSelector(getIsLoggedIn);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     dispatch(fetchContacts());
+  //   } else{contacts :[]}
+  // }, [isLoggedIn, dispatch]);
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
   const contacts = useSelector(contactsSelector);
   const filter = useSelector(filterSelector);
+
   const loading = useSelector(loadingSelector);
+
   const data = contacts.filter(({ name }) =>
     name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
   );
 
-  const elements = data.map(({ id, name, phone }) => {
+  const elements = data.map(({ id, name, number }) => {
     return (
       <li key={id} className={s.item}>
         <p className={s.text}>{name}</p>
-        <p className={s.text}>{phone}</p>
+        <p className={s.text}>{number}</p>
         <button
           className={s.btn}
           type="submit"

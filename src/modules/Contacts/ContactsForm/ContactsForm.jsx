@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import s from './Form.module.css';
+import s from './ContactsForm.module.css';
 // import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsSelector } from 'redux/contacts/contacts-selectors';
@@ -10,7 +10,7 @@ export default function Form() {
 
   const dispatch = useDispatch();
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -18,33 +18,33 @@ export default function Form() {
       case 'name':
         setName(value);
         break;
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;
       default:
         return;
     }
   };
 
-  const formSubmitData = ({ name, phone }) => {
+  const formSubmitData = ({ name, number }) => {
     const newContactName = name.toLowerCase();
 
     if (contacts.some(({ name }) => name.toLowerCase() === newContactName)) {
       alert(`${name} is already in contacts`);
     } else {
-      dispatch(addContacts({ name, phone }));
+      dispatch(addContacts({ name, number }));
     }
   };
 
   const onFormSubmit = event => {
     event.preventDefault();
-    formSubmitData({ name, phone });
+    formSubmitData({ name, number });
     resetForm();
   };
 
   const resetForm = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -63,17 +63,17 @@ export default function Form() {
           required
         />
       </label>
-      <label htmlFor="phone">
+      <label htmlFor="number">
         Number
         <input
           className={s.inputNumber}
-          id="phone"
+          id="number"
           onChange={handleInputChange}
           type="tel"
-          name="phone"
-          value={phone}
+          name="number"
+          value={number}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          title="Number number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
       </label>

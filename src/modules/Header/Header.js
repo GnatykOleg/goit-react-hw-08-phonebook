@@ -1,16 +1,14 @@
-import HeaderMenu from 'modules/Header/HeaderMenu/HeaderMenu';
-import HeaderUser from 'modules/Header/HeaderUser/HeaderUser';
+import { HeaderMenu, HeaderAuth, UserMenu } from '../../modules';
+import { useSelector } from 'react-redux';
+import { getIsLoggedIn } from 'redux/auth/auth-selectors';
 import s from './Header.module.css';
 
 export default function Header() {
+  const isLoggedIn = useSelector(getIsLoggedIn);
   return (
     <header className={s.header}>
-      <div className="container">
-        <nav>
-          <HeaderMenu />
-        </nav>
-        <HeaderUser />
-      </div>
+      <HeaderMenu />
+      {isLoggedIn ? <UserMenu /> : <HeaderAuth />}
     </header>
   );
 }

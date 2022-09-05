@@ -1,6 +1,6 @@
 import { Blocks } from 'react-loader-spinner';
 
-export function Loader() {
+export default function Loader() {
   return (
     <Blocks
       visible={true}

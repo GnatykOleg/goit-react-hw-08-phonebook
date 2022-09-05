@@ -1,10 +1,10 @@
-import { Form, Contacts, Filter } from 'components';
+import { ContactsFilter, ContactsList, ContactsForm } from 'modules';
 export default function ContactsPage() {
   return (
     <>
-      <Form />
-      <Filter />
-      <Contacts />
+      <ContactsForm />
+      <ContactsFilter />
+      <ContactsList />
     </>
   );
 }
