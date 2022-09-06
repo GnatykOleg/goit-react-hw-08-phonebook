@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/480.b195498c.chunk.js","mappings":"gNACe,SAASA,IACtB,OAAO,SAAC,KAAD,GACR,C","sources":["pages/RegisterPage/RegisterPage.js"],"sourcesContent":["import { RegisterForm } from 'modules';\nexport default function RegisterPage() {\n  return <RegisterForm />;\n}\n"],"names":["RegisterPage"],"sourceRoot":""}
