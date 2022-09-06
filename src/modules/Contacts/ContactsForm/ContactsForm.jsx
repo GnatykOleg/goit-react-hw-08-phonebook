@@ -3,6 +3,7 @@ import s from './ContactsForm.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsSelector } from 'redux/contacts/contacts-selectors';
 import { addContacts } from 'redux/contacts/contacts-operations';
+import { toast } from 'react-toastify';
 
 export default function Form() {
   const contacts = useSelector(contactsSelector);
@@ -28,7 +29,14 @@ export default function Form() {
   const formSubmitData = ({ name, number }) => {
     const newContactName = name.toLowerCase();
     if (contacts.some(({ name }) => name.toLowerCase() === newContactName)) {
-      alert(`${name} is already in contacts`);
+      toast.warn(`${name} is already in contacts`, {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+      });
     } else {
       dispatch(addContacts({ name, number }));
     }

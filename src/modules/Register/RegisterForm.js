@@ -69,6 +69,7 @@ export default function RegisterForm() {
             <label className={s.label} htmlFor="password">
               Password
               <input
+                placeholder="Minimum 7 symbols"
                 className={s.inputNumber}
                 id="password"
                 onChange={handleInputChange}

@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { Loader, PrivateRoute, PublicRoute } from 'components';
 import { Header, Footer } from 'modules';
 import { fetchRefreshCurrentUser } from 'redux/auth/auth-operations';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
@@ -35,6 +37,7 @@ export function App() {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
+      <ToastContainer />
       <Footer />
     </>
   );
