@@ -2,7 +2,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Loader, PrivateRoute, PublicRoute } from 'components';
-import { Header } from 'modules';
+import { Header, Footer } from 'modules';
 import { fetchRefreshCurrentUser } from 'redux/auth/auth-operations';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
@@ -35,6 +35,7 @@ export function App() {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
+      <Footer />
     </>
   );
 }

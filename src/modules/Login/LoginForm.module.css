@@ -35,7 +35,8 @@
 
 .main {
   padding-top: 40px;
-  padding-bottom: 100vw;
+  padding-bottom: 40px;
+  min-height: 931px;
   background-image: linear-gradient(
       to right,
       rgba(47, 48, 58, 0.4),
