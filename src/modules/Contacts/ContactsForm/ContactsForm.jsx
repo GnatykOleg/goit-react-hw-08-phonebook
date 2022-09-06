@@ -43,7 +43,7 @@ export default function Form() {
 
   return (
     <form onSubmit={onFormSubmit} className={s.form}>
-      <label htmlFor="name">
+      <label className={s.label} htmlFor="name">
         Name
         <input
           className={s.inputName}
@@ -57,7 +57,7 @@ export default function Form() {
           required
         />
       </label>
-      <label htmlFor="number">
+      <label className={s.label} htmlFor="number">
         Number
         <input
           className={s.inputNumber}

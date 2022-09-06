@@ -31,10 +31,10 @@ export default function LoginForm() {
   };
 
   return (
-    <section className={s.section}>
-      <main>
-        <h2 className={s.title}>Please login</h2>
+    <section>
+      <main className={s.main}>
         <div className={s.container}>
+          <h2 className={s.title}>Please login</h2>
           <form onSubmit={onFormSubmit} className={s.form}>
             <label className={s.label} htmlFor="email">
               Email

@@ -35,11 +35,11 @@ export default function RegisterForm() {
 
   return (
     <section className={s.section}>
-      <main>
-        <h2 className={s.title}>Please enter your registration details</h2>
+      <main className={s.main}>
         <div className={s.container}>
+          <h2 className={s.title}>Please enter your registration details</h2>
           <form onSubmit={onFormSubmit} className={s.form}>
-            <label htmlFor="name">
+            <label className={s.label} htmlFor="name">
               Name
               <input
                 className={s.inputNumber}
@@ -53,7 +53,7 @@ export default function RegisterForm() {
                 required
               />
             </label>
-            <label htmlFor="email">
+            <label className={s.label} htmlFor="email">
               Email
               <input
                 className={s.inputNumber}
@@ -66,7 +66,7 @@ export default function RegisterForm() {
                 required
               />
             </label>
-            <label htmlFor="password">
+            <label className={s.label} htmlFor="password">
               Password
               <input
                 className={s.inputNumber}

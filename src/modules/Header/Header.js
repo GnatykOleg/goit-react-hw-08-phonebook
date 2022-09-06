@@ -9,8 +9,10 @@ export default function Header() {
   return (
     <header className={s.header}>
       <div className={s.container}>
-        <HeaderMenu />
-        {isLoggedIn ? <UserMenu /> : <HeaderAuth />}
+        <div className={s.flex}>
+          <HeaderMenu />
+          {isLoggedIn ? <UserMenu /> : <HeaderAuth />}
+        </div>
       </div>
     </header>
   );
