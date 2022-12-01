@@ -1,0 +1,7 @@
+.headerAuth__list {
+  display: flex;
+}
+
+.headerAuth__item:first-child {
+  margin-right: 20px;
+}

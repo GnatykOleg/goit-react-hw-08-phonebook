@@ -20,5 +20,5 @@ export default function HeaderMenu() {
       </NavLink>
     </li>
   ));
-  return <ul className={s.list}>{elements}</ul>;
+  return <ul className={s.headerMenu__list}>{elements}</ul>;
 }

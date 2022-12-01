@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -25,6 +26,7 @@ export const fetchRefreshCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
+      toast.error(`Sorry error ${error.message}`, { position: 'top-center' });
       return rejectWithValue(error.message);
     }
   }
@@ -39,8 +41,12 @@ export const register = createAsyncThunk(
         RegisterFormSubmitValue
       );
       token.set(data.token);
+      toast.success('You have successfully registered.', {
+        position: 'top-center',
+      });
       return data;
     } catch (error) {
+      toast.error(`Sorry error ${error.message}`, { position: 'top-center' });
       return rejectWithValue(error.message);
     }
   }
@@ -52,8 +58,14 @@ export const logIn = createAsyncThunk(
     try {
       const { data } = await axios.post('users/login', RegisterFormSubmitValue);
       token.set(data.token);
+
+      toast.success('You have successfully logged in.', {
+        position: 'top-center',
+      });
+
       return data;
     } catch (error) {
+      toast.error(`Sorry error ${error.message}`, { position: 'top-center' });
       return rejectWithValue(error.message);
     }
   }
@@ -65,7 +77,11 @@ export const logOut = createAsyncThunk(
     try {
       await axios.post('users/logout');
       token.unset();
+      toast.success('You have successfully logged out of your account.', {
+        position: 'top-center',
+      });
     } catch (error) {
+      toast.error(`Sorry error ${error.message}`, { position: 'top-center' });
       return rejectWithValue(error.message);
     }
   }

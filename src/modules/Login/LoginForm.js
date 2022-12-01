@@ -31,43 +31,39 @@ export default function LoginForm() {
   };
 
   return (
-    <section>
-      <main className={s.main}>
-        <div className={s.container}>
-          <h2 className={s.title}>Please login</h2>
-          <form onSubmit={onFormSubmit} className={s.form}>
-            <label className={s.label} htmlFor="email">
-              Email
-              <input
-                className={s.inputNumber}
-                id="email"
-                onChange={handleInputChange}
-                type="email"
-                name="email"
-                value={email}
-                title="Exemple user@mail.com "
-                required
-              />
-            </label>
-            <label className={s.label} htmlFor="password">
-              Password
-              <input
-                className={s.inputNumber}
-                id="password"
-                onChange={handleInputChange}
-                type="password"
-                name="password"
-                value={password}
-                title="You can enter the password in any form"
-                required
-              />
-            </label>
-            <button className={s.btn} type="submit">
-              login
-            </button>
-          </form>
-        </div>
-      </main>
-    </section>
+    <div className={s.formContainer}>
+      <form onSubmit={onFormSubmit} className={s.form}>
+        <label className={s.label} htmlFor="email">
+          Email
+        </label>
+        <input
+          className={s.input}
+          id="email"
+          onChange={handleInputChange}
+          type="email"
+          name="email"
+          value={email}
+          title="Example user@mail.com "
+          required
+        />
+        <label className={s.label} htmlFor="password">
+          Password
+        </label>
+        <input
+          className={s.input}
+          id="password"
+          onChange={handleInputChange}
+          type="password"
+          name="password"
+          value={password}
+          title="You can enter the password in any form"
+          required
+        />
+
+        <button className={s.button} type="submit">
+          login
+        </button>
+      </form>
+    </div>
   );
 }

@@ -30,10 +30,10 @@ export default function Contacts() {
   const elements = data.map(({ id, name, number }) => {
     return (
       <li key={id} className={s.item}>
-        <p className={s.text}>{name}</p>
-        <p className={s.text}>{number}</p>
+        <p className={s.text}>Name: {name}</p>
+        <p className={s.text}>Number: {number}</p>
         <button
-          className={s.btn}
+          className={s.button}
           type="submit"
           onClick={() => dispatch(deleteContacts(id))}
         >
@@ -44,9 +44,9 @@ export default function Contacts() {
   });
 
   return (
-    <ul className={s.list}>
-      <h3 className={s.listTitle}>Total contacts: {data.length}</h3>
-      {!loading ? elements : <Loader />}
-    </ul>
+    <>
+      <h3 className={s.title}>Total contacts: {data.length}</h3>
+      <ul className={s.list}>{!loading ? elements : <Loader />}</ul>
+    </>
   );
 }

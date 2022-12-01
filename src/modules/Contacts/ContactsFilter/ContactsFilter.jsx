@@ -7,11 +7,13 @@ export default function Filter() {
 
   const dispatch = useDispatch();
   return (
-    <div className={s.filter}>
-      <label htmlFor="filter" className={s.labelFilter}>
-        Find contacts by name
+    <div className={s.formContainer}>
+      <form className={s.form}>
+        <label htmlFor="filter" className={s.label}>
+          Find contacts by name
+        </label>
         <input
-          className={s.filterInput}
+          className={s.input}
           onChange={event => dispatch(setFilter(event.currentTarget.value))}
           type="name"
           name="filter"
@@ -19,7 +21,7 @@ export default function Filter() {
           value={value}
           required
         />
-      </label>
+      </form>
     </div>
   );
 }

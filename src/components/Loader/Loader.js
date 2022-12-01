@@ -1,12 +1,15 @@
 import { Blocks } from 'react-loader-spinner';
+import PropTypes from 'prop-types';
 
-export default function Loader() {
+import s from '../Loader/Loader.module.css';
+
+export default function Loader({ height = '100%' }) {
   return (
-    <div className="loader">
+    <div className={s.loader} style={{ height: height }}>
       <Blocks
         visible={true}
-        height="80"
-        width="80"
+        height="150"
+        width="150"
         ariaLabel="blocks-loading"
         wrapperStyle={{}}
         wrapperClass="blocks-wrapper"
@@ -14,3 +17,7 @@ export default function Loader() {
     </div>
   );
 }
+
+Loader.propTypes = {
+  height: PropTypes.string,
+};

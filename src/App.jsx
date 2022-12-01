@@ -2,7 +2,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Loader, PrivateRoute, PublicRoute } from 'components';
-import { Header, Footer } from 'modules';
+import { Header } from 'modules';
 import { fetchRefreshCurrentUser } from 'redux/auth/auth-operations';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -22,7 +22,8 @@ export function App() {
   return (
     <>
       <Header />
-      <Suspense fallback={<Loader />}>
+
+      <Suspense fallback={<Loader height="100vh" />}>
         <Routes>
           <Route element={<PrivateRoute />}>
             <Route path="/contacts" element={<ContactsPage />} />
@@ -38,7 +39,6 @@ export function App() {
         </Routes>
       </Suspense>
       <ToastContainer />
-      <Footer />
     </>
   );
 }

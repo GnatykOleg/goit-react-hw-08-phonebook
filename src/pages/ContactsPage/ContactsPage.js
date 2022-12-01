@@ -1,16 +1,15 @@
 import { ContactsFilter, ContactsList, ContactsForm } from 'modules';
-import s from '../ContactsPage/ContactsPage.module.css';
+import { Container } from 'components';
+
 export default function ContactsPage() {
   return (
-    <section>
-      <main className={s.main}>
-        <div className={s.container}>
-          <h2 className={s.title}>Contacts</h2>
-          <ContactsForm />
-          <ContactsFilter />
-          <ContactsList />
-        </div>
-      </main>
+    <section className="section">
+      <h2 className="visually-hidden">Contacts page</h2>
+      <Container>
+        <ContactsForm />
+        <ContactsFilter />
+        <ContactsList />
+      </Container>
     </section>
   );
 }
