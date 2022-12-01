@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkphonebook=self.webpackChunkphonebook||[]).push([[541],{1541:function(e,n,c){c.r(n),c.d(n,{default:function(){return i}});var o=c(3485),t="HomePage_title__UFLA3",s=c(184);function i(){return(0,s.jsx)("section",{className:"section",children:(0,s.jsx)("main",{children:(0,s.jsx)(o.W2,{children:(0,s.jsx)("h1",{className:t,children:"Welcomes you to the contact collections web application."})})})})}}}]);
+//# sourceMappingURL=541.2ecfc702.chunk.js.map
